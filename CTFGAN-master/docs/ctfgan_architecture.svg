@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="650" viewBox="0 0 1200 650">
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="none" stroke="#34516a"/></marker></defs>
+<rect width="1200" height="650" fill="#f7f9fc"/>
+<g font-family="Arial, sans-serif" fill="#19334b" text-anchor="middle">
+<text x="600" y="38" font-size="26" font-weight="bold">CTFGAN: contour-guided text-conditioned image generation</text>
+<g stroke="#7997ae" stroke-width="2" fill="#e4eef9">
+<rect x="30" y="90" width="180" height="65" rx="10"/><rect x="270" y="90" width="220" height="65" rx="10"/>
+<rect x="30" y="225" width="180" height="65" rx="10"/><rect x="270" y="225" width="220" height="65" rx="10"/>
+<rect x="550" y="110" width="350" height="190" rx="12" fill="#dceee5"/>
+<rect x="970" y="170" width="200" height="75" rx="10"/>
+<rect x="30" y="390" width="220" height="80" rx="10"/>
+<rect x="320" y="390" width="270" height="80" rx="10"/>
+<rect x="680" y="390" width="260" height="80" rx="10" fill="#fff0d4"/>
+<rect x="970" y="390" width="200" height="80" rx="10" fill="#fff0d4"/>
+</g>
+<g font-size="18">
+<text x="120" y="128">Text description</text><text x="380" y="117">Frozen DAMSM LSTM</text><text x="380" y="142">sentence e + noise z</text>
+<text x="120" y="251">Gaussian noise z</text><text x="120" y="275">FC → 4 × 4</text>
+<text x="380" y="251">Offline Canny contour c</text><text x="380" y="276" font-size="13">256 × 256, thresholds 100/200</text>
+<text x="725" y="143" font-weight="bold">7 fusion scales</text><text x="725" y="177" font-size="16">4 → 8 → 16 → 32 → 64 → 128 → 256</text>
+<text x="725" y="213">Residual → TFBlock → CFBlock</text><text x="725" y="246" font-size="13">TF: affine → ReLU → affine → ReLU → conv</text><text x="725" y="278">CF: conv(c) + feature → ReLU</text>
+<text x="1070" y="200">RGB conv + Tanh</text><text x="1070" y="226">Generated image x</text>
+<text x="140" y="421">Real / generated image</text><text x="140" y="449">+ matched conditions e, c</text>
+<text x="455" y="421">Discriminator</text><text x="455" y="449">6 DownBlocks + joint head</text>
+<text x="810" y="421">Adversarial loss</text><text x="810" y="449">−D(G(z,e,c),e,c)</text>
+<text x="1070" y="421">Differentiable Sobel</text><text x="1070" y="449">Lcontour = ‖E(x) − c‖²</text>
+<text x="600" y="550" font-size="24" font-weight="bold">LG = Ladv + 0.1 × Lcontour</text>
+<text x="600" y="594" font-size="16">First fusion block stays at 4 × 4; six subsequent blocks upsample. Canny is offline; Sobel stays in the gradient graph.</text>
+</g></g>
+<g fill="none" stroke="#34516a" stroke-width="2" marker-end="url(#arrow)">
+<path d="M210 122 H270"/><path d="M490 122 H550"/><path d="M210 257 H230 V205 H550"/>
+<path d="M490 257 H550"/><path d="M900 207 H970"/><path d="M250 430 H320"/><path d="M590 430 H680"/><path d="M1070 245 V390"/>
+<path d="M810 470 V510 H600 V525"/><path d="M1070 470 V510 H600"/>
+</g></svg>

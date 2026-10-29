@@ -1,0 +1,37 @@
+# Paths are relative to the repository root, independent of the working directory.
+dataset_name: birds
+CONFIG_NAME: bird
+data_dir: data/birds
+contour_dir: data/birds/contours_256
+output_dir: runs/ctfgan_bird
+npz_path: data/birds/npz/bird_val256_FIDK0.npz
+device: cuda:0
+manual_seed: 100
+imsize: 256
+nf: 32
+z_dim: 100
+cond_dim: 256
+ch_size: 3
+use_tf: true
+use_cf: true
+lambda_contour: 0.1
+# Literal Eq. 7: spatial squared L2 sum, followed by batch mean.
+contour_reduction: sum
+sobel_eps: 0.000001
+canny_low: 100
+canny_high: 200
+lr_g: 0.0001
+lr_d: 0.0004
+beta1: 0.0
+beta2: 0.9
+magp_weight: 2.0
+batch_size: 32
+num_workers: 4
+max_epoch: 1220
+gen_interval: 1
+save_interval: 10
+TEXT:
+  WORDS_NUM: 18
+  EMBEDDING_DIM: 256
+  CAPTIONS_PER_IMAGE: 10
+  DAMSM_NAME: data/birds/DAMSMencoder/text_encoder200.pth
